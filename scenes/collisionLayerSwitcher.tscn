@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dwveme2feu7yf"]
+
+[ext_resource type="Script" uid="uid://c7ndx220ujn3g" path="res://scenes/collisionLayerSwitcher.gd" id="1_2d5cy"]
+
+[node name="CollisionLayerSwitcher" type="Area2D" unique_id=1850747433]
+script = ExtResource("1_2d5cy")
+layer1 = null
+layer2 = null
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1224263077]
+polygon = PackedVector2Array(16, 0, 32, 8, 16, 16, 0, 8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

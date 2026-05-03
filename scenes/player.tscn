@@ -3544,7 +3544,7 @@ animation = &"attack2ur"
 autoplay = "idledr"
 speed_scale = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1930323243]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1930323243]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_fulsm")
 
