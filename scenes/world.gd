@@ -1,13 +1,28 @@
 extends Node2D
-@onready var ground := $Ground
+@export var layer1: TileMapLayer
+@export var layer2: TileMapLayer
+
+var layers: Array[TileMapLayer]
+var switchLayer: int = 8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	addEdgeCollisions(ground)
+	layers = [layer1]
+	for layer: TileMapLayer in layers:
+		setCollisionLayers(layer)
+		addEdgeCollisions(layer)
+	#setCollisionLayers(layer1)
+	#addEdgeCollisions(layer1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+#func _process(_delta: float) -> void:
+#	pass
+
+func setCollisionLayers(layer: TileMapLayer) -> void:
+	var i := layers.find(layer)
+	layer.tile_set.set_physics_layer_collision_layer(0, i + 1)
+	layer.tile_set.set_physics_layer_collision_layer(1, i + 2)
+	layer.tile_set.set_physics_layer_collision_layer(2, switchLayer)
 
 func addEdgeCollisions(tMap: TileMapLayer) -> void:
 	var filledTiles = tMap.get_used_cells()
