@@ -7,22 +7,26 @@ var switchLayer: int = 8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	layers = [layer1]
+	layers = [layer1, layer2]
 	for layer: TileMapLayer in layers:
+		print(layer.name)
 		setCollisionLayers(layer)
+		#if(layer == layer1):
 		addEdgeCollisions(layer)
 	#setCollisionLayers(layer1)
 	#addEdgeCollisions(layer1)
+	#print(layer2.tile_set.get_physics_layers_count())
+	print(layer2.tile_set.get_physics_layer_collision_layer(1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta: float) -> void:
-#	pass
+	#pass
 
 func setCollisionLayers(layer: TileMapLayer) -> void:
 	var i := layers.find(layer)
-	layer.tile_set.set_physics_layer_collision_layer(0, i + 1)
-	layer.tile_set.set_physics_layer_collision_layer(1, i + 2)
-	layer.tile_set.set_physics_layer_collision_layer(2, switchLayer)
+	layer.tile_set.set_physics_layer_collision_layer(0, 2 ** i)
+	layer.tile_set.set_physics_layer_collision_layer(1, 2 ** (i + 1))
+	layer.tile_set.set_physics_layer_collision_layer(2, 2 ** switchLayer)
 
 func addEdgeCollisions(tMap: TileMapLayer) -> void:
 	var filledTiles = tMap.get_used_cells()
