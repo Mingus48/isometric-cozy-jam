@@ -9,14 +9,8 @@ var switchLayer: int = 8
 func _ready() -> void:
 	layers = [layer1, layer2]
 	for layer: TileMapLayer in layers:
-		print(layer.name)
 		setCollisionLayers(layer)
-		#if(layer == layer1):
 		addEdgeCollisions(layer)
-	#setCollisionLayers(layer1)
-	#addEdgeCollisions(layer1)
-	#print(layer2.tile_set.get_physics_layers_count())
-	print(layer2.tile_set.get_physics_layer_collision_layer(1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta: float) -> void:
