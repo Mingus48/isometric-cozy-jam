@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bbifripfvo24y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6r6qu"]
+radius = 8.0
+height = 26.0
+
+[node name="CollisionMaskSwitcher" type="Area2D" unique_id=486152236]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780022963]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6r6qu")
