@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://bbifripfvo24y"]
 
+[ext_resource type="Script" uid="uid://cd1na5174a3cu" path="res://scenes/collisionMaskSwitcher.gd" id="1_i2v0j"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6r6qu"]
 radius = 8.0
 height = 26.0
 
 [node name="CollisionMaskSwitcher" type="Area2D" unique_id=486152236]
+collision_mask = 128
+script = ExtResource("1_i2v0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780022963]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_6r6qu")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

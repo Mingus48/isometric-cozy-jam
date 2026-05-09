@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://wd7o7uleres6" path="res://Knight/Melee.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://bcmgpsdv8jk2" path="res://Knight/Melee2.png" id="3_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://bbifripfvo24y" path="res://scenes/collisionMaskSwitcher.tscn" id="6_fjrip"]
-[ext_resource type="Script" uid="uid://cd1na5174a3cu" path="res://scenes/collisionMaskSwitcher.gd" id="7_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tnnx"]
 atlas = ExtResource("2_qlg0r")
@@ -3536,8 +3535,8 @@ radius = 8.0
 height = 26.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1520069928]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_dqkch")
 
@@ -3557,7 +3556,5 @@ position = Vector2(0, -24)
 zoom = Vector2(5, 5)
 
 [node name="CollisionMaskSwitcher" parent="." unique_id=486152236 instance=ExtResource("6_fjrip")]
-script = ExtResource("7_smehm")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="CollisionMaskSwitcher" to="CollisionMaskSwitcher" method="_on_body_entered"]

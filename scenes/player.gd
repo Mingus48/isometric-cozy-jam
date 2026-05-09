@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var animSprite = $AnimatedSprite2D
+@onready var maskSwitcher = $CollisionMaskSwitcher
 
 var maxSpeed := 200
 var accel := 25
@@ -11,7 +12,7 @@ var attackNum := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	maskSwitcher.changeLayer.connect(changeLayer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,3 +60,12 @@ func attack() -> void:
 		animate(lastDir, "attack" + str(attackNum + 1))
 		#attackNum = 1 - attackNum
 		dir = Vector2.ZERO
+
+func changeLayer(layer: int):
+	print(collision_layer)
+	print(collision_mask)
+	collision_layer = layer
+	collision_mask = layer
+	print(collision_layer)
+	print(collision_mask)
+	print(layer)

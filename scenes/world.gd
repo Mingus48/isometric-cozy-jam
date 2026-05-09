@@ -20,7 +20,7 @@ func setCollisionLayers(layer: TileMapLayer) -> void:
 	var i := layers.find(layer)
 	layer.tile_set.set_physics_layer_collision_layer(0, 2 ** i)
 	layer.tile_set.set_physics_layer_collision_layer(1, 2 ** (i + 1))
-	layer.tile_set.set_physics_layer_collision_layer(2, 2 ** switchLayer)
+	layer.tile_set.set_physics_layer_collision_layer(2, 2 ** (switchLayer - 1))
 
 func addEdgeCollisions(tMap: TileMapLayer) -> void:
 	var filledTiles = tMap.get_used_cells()

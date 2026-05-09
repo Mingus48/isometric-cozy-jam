@@ -1,6 +1,6 @@
 extends Area2D
 
-#signal newLayer
+signal changeLayer(layer: int)
 
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
@@ -9,9 +9,15 @@ extends Area2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print("bodies: ")
-	for body: Node2D in get_overlapping_bodies():
-		print(body)
+	pass
 
-func _on_body_entered(body: Node2D) -> void:
-	print(body)
+func _on_body_entered(body: TileMapLayer) -> void:
+	#print(body)
+	get_parent().z_index = body.z_index + 1
+	emit_signal("changeLayer", body.tile_set.get_physics_layer_collision_layer(1))
+	#print(body.z_index)
+	#print(get_parent().z_index)
+
+func _on_body_exited(_body: TileMapLayer) -> void:
+	#print(body)
+	pass
